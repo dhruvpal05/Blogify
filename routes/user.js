@@ -1,18 +1,27 @@
 const { Router } = require('express');
-const {User} = require("../models/user.js")
+const { User } = require("../models/user.js")
 
 const router = Router();
 
-router.get("/signin",(req,res) => {
+router.get("/signin", (req, res) => {
     res.render('signin');
 })
 
-router.get("/signup",(req,res) => {
+router.get("/signup", (req, res) => {
     res.render('signup');
 })
 
-router.post("/signup",async (req,res) =>{
-    const {fullName, email, password} = req.body;
+router.post("/signin", async (req, res) => {
+    const { email, password } = req.body;
+    const user = User.matchPassword(email,password);
+
+    console.log({ user });
+    return res.redirect("/")
+
+})
+
+router.post("/signup", async (req, res) => {
+    const { fullName, email, password } = req.body;
     await User.create({
         fullName,
         email,
