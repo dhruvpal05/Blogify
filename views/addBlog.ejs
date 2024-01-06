@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Blog</title>
     <%- include('./partials/head') %>
 </head>
+
 <body>
     <%- include('./partials/nav') %>
-    
+        <form action="/blog" method="post" enctype="multipart/form-data">
+            <div class="container mt-4">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input name="title" type="text" class="form-control" id="title">
+                </div>
+                <label for="description" class="form-label">Description</label>
+                <div class="form-floating">
+                    <textarea name="description" class="form-control" id="floatingTextarea"></textarea>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="coverImage" class="form-label">Add Image</label>
+                    <input name="coverImage" type="file" class="form-control" id="coverImage">
+                </div>
+                <div class="mb-3 mt-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
 
-    <%- include('./partials/scripts') %>
+
+        <%- include('./partials/scripts') %>
 </body>
+
 </html>
