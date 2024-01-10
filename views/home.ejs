@@ -10,9 +10,21 @@
 
 <body>
     <%- include('./partials/nav') %>
+        <% blogs.forEach(blog=> { %>
+            <div class="mx-4 my-4">
+                <div class="card ml-3" style="width: 18rem;">
+                    <img src="<%= blog.coverImgURL %>" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"> <%=blog.body %> </h5>
+                        <p class="card-text"><%= blog.body %></p>
+                        <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
 
 
-        <%- include('./partials/scripts') %>
+                <%- include('./partials/scripts') %>
 </body>
 
 </html>

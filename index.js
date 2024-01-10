@@ -23,12 +23,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookiepaser());
 app.use(checkForAuthenticationCookie("token"));
+app.use(express.static(path.resolve('./public')))
 
 app.get("/", async (req, res) => {
-    const allblogs = await Blog.find({});
+    const allBlogs = await Blog.find({});
     return res.render("home", {
         user: req.user,
-        blogs: allblogs,
+        blogs: allBlogs,
     });
 })
 
