@@ -10,19 +10,27 @@
 
 <body>
     <%- include('./partials/nav') %>
-        <% blogs.forEach(blog=> { %>
-            <div class="mx-4 my-4">
-                <div class="card ml-3" style="width: 18rem;">
-                    <img src="<%= blog.coverImgURL %>" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"> <%=blog.title %> </h5>
-                        <!-- <p class="card-text"><%= blog.body %></p> -->
-                        <a href="/blog/<%= blog._id %>" class="btn btn-primary  my-2">View</a>
+        <div class="container">
+            <div class="row row-cols-4">
+                <% blogs.forEach(blog=> { %>
+                    <div class="m ">
+                        <div class="col">
+                            <div class="card ml-3" style="width: 18rem;">
+                                <img src="<%= blog.coverImgURL %>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%=blog.title %>
+                                    </h5>
+                                    <!-- <p class="card-text"><%= blog.body %></p> -->
+                                    <a href="/blog/<%= blog._id %>" class="btn btn-primary  my-2">View</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                    <% }) %>
             </div>
-            <% }) %>
-                <%- include('./partials/scripts') %>
+        </div>
+        <%- include('./partials/scripts') %>
 </body>
 
 </html>
