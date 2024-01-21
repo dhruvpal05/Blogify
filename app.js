@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express');
 const path = require('path');
 const userRouter = require('./routes/user');
@@ -8,9 +10,9 @@ const { checkForAuthenticationCookie } = require('./middlewares/authentication')
 const {Blog} = require("./models/blog");
 
 const app = express();
-const PORT = 8002;
+const PORT = process.env.PORT || 8002;
 
-mongoose.connect("mongodb://localhost:27017/blogify").then(() => {
+mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log("mongoDB connected")
 }).catch((err) => {
     console.error("Error connecting to MongoDB:", err);
